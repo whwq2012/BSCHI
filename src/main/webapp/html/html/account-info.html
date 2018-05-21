@@ -1,0 +1,27 @@
+<div class="container" ng-app="accountInfo">
+    <ul class="breadcrumb">
+        <li><a href="home">Home</a></li>
+        <li><a href="">Store</a></li>
+        <li class="active">My Account Page</li>
+    </ul>
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+        <!-- BEGIN SIDEBAR -->
+        <div class="sidebar col-md-3 col-sm-3">
+            <ul class="list-group margin-bottom-25 sidebar-menu">
+                <li class="list-group-item clearfix" ng-class="{'choosed-item': view == 'my-account'}" ng-click="changeView('my-account')"><a href="javascript:;"><i class="fa fa-angle-right"></i> My account</a></li>
+                <li class="list-group-item clearfix" ng-class="{'choosed-item': view == 'reset-password'}" ng-click="changeView('reset-password')"><a href="javascript:;"><i class="fa fa-angle-right"></i> Restore Password</a></li>
+                <li class="list-group-item clearfix" ng-class="{'choosed-item': view == 'my-advise'}" ng-click="changeView('my-advise')"><a href="javascript:;"><i class="fa fa-angle-right"></i> My Advise</a></li>
+                <li class="list-group-item clearfix" ng-class="{'choosed-item': view == 'my-activity'}" ng-click="changeView('my-activity')"><a href="javascript:;"><i class="fa fa-angle-right"></i> My Activity</a></li>
+                <li class="list-group-item clearfix" ng-class="{'choosed-item': view == 'my-order'}" ng-click="changeView('my-order')"><a href="javascript:;"><i class="fa fa-angle-right"></i> My Order</a></li>
+                <li class="list-group-item clearfix" ng-class="{'choosed-item': view == 'my-comment'}" ng-click="changeView('my-comment')"><a href="javascript:;"><i class="fa fa-angle-right"></i> My Comment</a></li>
+            </ul>
+        </div>
+        <!-- END SIDEBAR -->
+        
+        <my-account ng-if="view == 'my-account'"></my-account>
+        <reset-password  ng-if="view == 'reset-password'"></reset-password>
+        <my-comment ng-if="view == 'my-comment'"></my-comment>
+    </div>
+    <!-- END SIDEBAR & CONTENT -->
+</div>

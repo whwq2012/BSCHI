@@ -1,0 +1,64 @@
+input, button {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+    background-color: #71CC08;
+}
+
+.nav {
+    color: #16A4E6;
+    background-color: #F9FCFC;
+    text-align: center;
+    font-size: 30px;
+    background-color: #07F1CA;
+}
+
+.sign_up_form {
+    color: #16A4E6;
+    background-color: #F9FCFC;
+    text-align: center;
+    font-size: 30px;
+    top: 100px;
+    position: relative;
+    background-color: #71CC08;
+}
+
+tr {
+    margin: 0 0 0 0;
+    border:0px;
+}
+
+td {
+   font-size: 20px;
+   color: #5357BD;
+   border:0px;
+}
+
+.from_bady {
+    text-align:center;
+    width: 30%;
+    margin: auto;
+    background-color: #07F1CA;
+    display: list-item;
+	list-style-type: none;
+}
+
+form {
+	display: inline-grid;
+}
+
+table {
+    border: none;
+    height: 300px;
+}
+
+.row_name {
+    text-align: right;
+}
+
+.error_message {
+    color: red;
+    font-size: 15px;
+    float: right;
+}

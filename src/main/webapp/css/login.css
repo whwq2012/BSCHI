@@ -1,0 +1,143 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-image: url(../image/login_background.jpg);
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	overflow: hidden;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+body, input, button {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.login {
+	padding: 15px;
+	width: 400px;
+	min-height: 400px;
+	margin: 10% auto 10% auto;
+}
+
+.heading {
+	text-align: center;
+	margin-top: 1%;
+}
+
+.form_layout {
+	display: list-item;
+	list-style-type: none;
+}
+
+form {
+	display: inline-grid;
+}
+
+.input-group {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	margin-top: 20px;
+	color: white;
+}
+
+.last-of-type {
+	border-top: none;
+}
+
+span {
+	background: transparent;
+	min-width: 53px;
+	border: none;
+}
+
+i {
+	font-size: 1.5em;
+	color: rgba(255, 255, 255, 0.2);
+}
+
+.form-control {
+	padding: 10px;
+	font-size: 1.6em;
+	width: 100%;
+	background: transparent;
+	color: white;
+}
+
+form-control:focus {
+	border: none;
+}
+
+button {
+	margin-top: 20px;
+	background: #1205A1;
+	border: none;
+	font-size: 1.6em;
+	font-weight: 300;
+	padding: 5px 0;
+	width: 100%;
+	border-radius: 3px;
+	border-collapse: separate;
+	color: #040263;
+	border-bottom: 4px solid darken;
+	justify-content: center;
+	margin: 0 auto;
+	background-color: #000096;
+	color: #FFF;
+	border: 0px;
+}
+
+.login_title {
+	font-size: 3em;
+	font-weight: 300;
+	color: rgba(255, 255, 255, 0.7);
+	display: inline-block;
+	padding-bottom: 5px;
+	text-shadow: 1px 1px 3px #000000;
+	color: white;
+}
+
+.float {
+	display: inline-block;
+	-webkit-transition-duration: 0.3s;
+	transition-duration: 0.3s;
+	-webkit-transition-property: transform;
+	transition-property: transform;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+	width: 150px;
+	margin-top: 50px;
+}
+
+.float:hover, .float:focus, .float:active {
+	-webkit-transform: translateY(-3px);
+	transform: translateY(-3px);
+}
+
+.footer {
+	bottom: 50px;
+	position: relative;
+}
+
+a {
+	text-decoration: none;
+}
+
+.sign_up_link {
+	text-decoration: none;
+    font-size: 25px;
+    color: #9908D3;
+}
+
+.footer_content {
+	margin-top: 10px;
+	text-align: center;
+	font: 12px Arial;
+	color: #2E4358;
+	font-weight: reular;
+}

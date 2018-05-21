@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+  
+<mapper namespace="com.edison.dao.user.UserDao">  
+      
+    <!--注意sql语句没有分号结尾  -->  
+      
+    <insert id="addUser" parameterType="User">
+        insert into user_t(name,password) values(#{name},#{password})  
+    </insert>  
+      
+    <!--注意这里的参数类型是parameterType而不是parameterMap，因为返回的是单个类型  -->  
+    <select id="findUserByNameAndPwd"  parameterType="map"  resultType="User">  
+        select * from user_t where name=#{name} and password=#{password}  
+    </select>
+    
+    <select id="findUserByName"  parameterType="map"  resultType="User">  
+        select name from user_t where name=#{name}
+    </select>
+    
+    <update id="resetUserPassword" parameterType="map">
+        update user_t set password =#{password} where name=#{name};  
+    </update>   
+      
+</mapper>  
