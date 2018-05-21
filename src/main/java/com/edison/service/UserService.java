@@ -8,6 +8,6 @@ public interface UserService {
 	Boolean regist(User user);  
     //用户登录  
     User login(String name, String password);  
-    
-    void resetPassword(String name, String password);
+    // 修改用户信息
+    public int alert(User user);
 }

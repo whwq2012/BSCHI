@@ -13,30 +13,35 @@ public class UserServiceImpl implements UserService    {
     @Autowired  
     private UserDao userDao;  
       
-    @Override  
     public Boolean regist(User user) {
-    	User findUser = new User();
-    //	findUser = userDao.findUserByName(user.getName());
-    //	if(findUser == null) {
-         //   userDao.addUser(user); 
-         //   return true;
-    	//} else {
-    		return false;
-    	//}
- 
-    }  
+    	User findUser = userDao.findUserByName(user.getName());
+    	if (findUser == null) {
+    	userDao.addUser(user);
+    	return true;
+    }else {
+    	return false;
+	}  
+ }
   
-    @Override  
     public User login(String name, String password) {
-    	User user = new User();
-    	//user = userDao.findUserByNameAndPwd(name,password);
-    	System.out.println("user - name:"+ user);
-    	return user;
+    	User user = userDao.findUserByNameAndPwd(name,password);
+    	
+    	if (user!= null) {
+    		return user;
+    	}else {
+			return null;
+		}
+    }
+    
+    public int alert(User user) {
+    	
+    	int result = userDao.updateUser(user);
+    	
+    	return result;
     }
 
-	@Override
-	public void resetPassword(String name, String password) {
-		//userDao.resetUserPassword(name, password);
-	}  
+
+
+
 
 }
