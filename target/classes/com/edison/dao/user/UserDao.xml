@@ -6,16 +6,16 @@
     <!--注意sql语句没有分号结尾  -->  
       
     <insert id="addUser" parameterType="User">
-        INSERT INTO user(name,password) VALUES(#{name},#{password})  
+        INSERT INTO user(name,nick,password,role,hobby,address,phonenumber,sex) VALUES(#{name},#{nick},#{password},#{role},#{hobby},#{address},#{phonenumber},#{sex})  
     </insert>  
       
     <!--注意这里的参数类型是parameterType而不是parameterMap，因为返回的是单个类型  -->  
     <select id="findUserByNameAndPwd"  parameterType="map"  resultType="User">  
-        select * from user_t where name=#{name} and password=#{password}  
+        select * from user where name=#{name} and password=#{password}  
     </select>
     
     <select id="findUserByName"  parameterType="map"  resultType="User">  
-        select name from user_t where name=#{name}
+        select * from user where name=#{name}
     </select>
     
     <update id="updateUser" parameterType="User">

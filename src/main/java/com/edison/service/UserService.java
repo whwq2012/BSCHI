@@ -12,4 +12,6 @@ public interface UserService {
     User login(String name, String password);  
     // 修改用户信息
     public int alert(User user);
+    
+    public User findUserByName(String userName);
 }

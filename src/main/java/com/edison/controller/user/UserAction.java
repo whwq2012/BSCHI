@@ -13,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -20,6 +21,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.edison.common.CacheUtil;
 import com.edison.common.StringUtil;
 import com.edison.controller.BaseController;
+import com.edison.entity.ReturnObj;
 import com.edison.entity.User;
 import com.edison.service.UserService;
 
@@ -33,53 +35,37 @@ public class UserAction extends BaseController {
     private static Logger logger = Logger.getLogger(UserAction.class);
       
     @RequestMapping(value="regist", method = RequestMethod.POST)  
-    public String regist(User user, Model model){  
+    @ResponseBody
+    public Object regist(@RequestParam("userName")String userName, @RequestParam("password")String password){  
           
-        System.out.println("用户注册："+user.getName()+user.getPassword());  
-           
-        Boolean isSuccess = userService.regist(user);  
-        if(isSuccess){
-            model.addAttribute("msg", "注册成功");  
-            //注册成功后跳转success.jsp页面  
-            return "success";  
-        } else {
-        	return "regist";
-        }
+    	User user = new User();
+    	user.setName(userName);
+    	user.setPassword(password);
+    	Boolean is_rigist = userService.regist(user);
+    	ReturnObj rback = new ReturnObj();
+    	if (is_rigist) {
+    		rback.setCode("-1");
+    	}else {
+    		
+    		rback.setCode("0");
+    	}
+    	return rback;
     }  
 
-    @RequestMapping(value="login.action", method = RequestMethod.POST)
-    public ModelAndView login(String name, String password, Model model, HttpServletRequest request){  
-          
-        System.out.println("用户登录："+ name +" - "+password); 
-        ModelAndView mv = new ModelAndView();
-        String result;
-        Map<String, Object> map = new HashMap();
-        User user = userService.login(name,password);
-        map.put("User", user);
-        CacheUtil.user = user;
-        logger.info("请求登录");
-        logger.error("error edison");
-        logger.warn("warn");
-        HttpSession session = request.getSession(true);
-        if (user == null) {
-        	result = "login";
-        	model.addAttribute("msg", "用户不存在或密码错误");
-        	mv.setViewName("login");
-        } else if(name.equals(user.getName())){
-            //model.addAttribute("msg", "Login success");
-           session.setAttribute("userName", user.getName());
-            logger.info(" login sucess");
-           // System.out.println(session);
-            mv.addObject("user", user);
-            mv.setView(new RedirectView("/BSCHI/user/home"));
-            setUser(user);
-            result = "forward:/main";
-        } else {
-        	mv.setViewName("login");
-        	result = "success";
-        }
-        System.out.println("jump----------");
-        return mv;
+    @RequestMapping(value="/login", method = RequestMethod.POST)
+    @ResponseBody
+    public Object login(@RequestParam("userName")String userName, @RequestParam("password")String password,HttpSession session){  
+    	User user = userService.findUserByName(userName);
+    	ReturnObj rback = new ReturnObj();
+    	if (user == null) {
+    		rback.setCode("-1");
+    	}else if (!user.getPassword().equals(password)) {
+			rback.setCode("-2");
+		}else {
+			rback.setCode("0");
+			session.setAttribute("user", user);
+		}
+    	return rback;
     }  
     
     @RequestMapping(value="home")  

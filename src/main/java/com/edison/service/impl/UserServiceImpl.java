@@ -16,10 +16,16 @@ public class UserServiceImpl implements UserService    {
     public Boolean regist(User user) {
     	User findUser = userDao.findUserByName(user.getName());
     	if (findUser == null) {
+    		user.setAddress("无");
+    		user.setHobby("玩游戏");
+    		user.setNick("篮球爱好者");
+    		user.setSex("男");
+    		user.setRole("normal");
+    		user.setPhonenumber("0000");
     	userDao.addUser(user);
-    	return true;
-    }else {
     	return false;
+    }else {
+    	return true;
 	}  
  }
   
@@ -39,5 +45,12 @@ public class UserServiceImpl implements UserService    {
     	
     	return result;
     }
+
+	@Override
+	public User findUserByName(String userName) {
+		return userDao.findUserByName(userName);
+	}
+    
+    
 
 }

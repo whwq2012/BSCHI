@@ -7,59 +7,46 @@
     <title>Sign Up Page</title>
 	<link rel="stylesheet" type="text/css" href="css/signup.css" />
 	<script type="text/javascript" src="js/lib/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function(){
-	        $("test").click(function(){
-                $("test").text("这是后来添加的内容");
-				alert("nihao");
-            })
-            $("p").dblclick(function(){
-                $("button").click();
-            })
-			$(".password").keydown(function(){
-               $("input").css("background-color","#FFFFCC");
-            });
-			$(".password_confirm").keydown(function(){
-                if ($(".password").val() != null) {
-				    if ($(".password").val() != $(".password_confirm").val()) {
-						 $(".error_message").text("Please confirm your input password.");
-					} else {
-						 $(".error_message").text("");
-					}
-				} else {
-				    $(".error_message").text("Please input your password first.");
-				}
-            });
-        })
-		function change(){ 
-            alert("onclick"); 
-        }
-	</script>
+
 </head>
 <body>
-    <div class="nav">Sign up</div>
+    <div class="nav">注册</div>
 	<div class="sign_up_form">
-		<form action="user/regist.action" class="from_bady">
+		<form action="" class="from_bady">
 			<table border="1">
 				<tr>
-					<td class="row_name">User Name:</td>  
-					<td><input type="text" name="name" class="name"></td>  
+					<td class="row_name">用户名</td>  
+					<td><input type="text" name="name" class="name" id="userName"></td>  
 				</tr>  
 				<tr>  
-					<td class="row_name">password:</td>  
-					<td><input type="password" name="password" class="password"></td>
+					<td class="row_name">密码</td>  
+					<td><input type="password" name="password" class="password" id="password"></td>
 				</tr>  
 				<tr>  
-					<td class="row_name">confirm password:</td>  
+					<td class="row_name">确认密码</td>  
 					<td><input type="password" name="confirm_password" class="password_confirm"></td>
 					<div class="error_message"></div>
 				</tr>  			
 				<tr>  
-					<td><input type="submit" value="Sign Up"></td>  
+					<td><input type="button" value="注册" id="regist"></td>  
 				</tr>  
 			</table>
 		</form>
 	</div>
-	<button class="test" onclick="change()">button</button>
 </body>
+	<script type="text/javascript">
+        
+        $("#regist").click(function(){
+        	$.post("http://localhost:8080/BSCHI/user/regist", 
+					{userName: $("#userName").val(), password: $("#password").val()},
+					function(data){
+						if (data["code"] == "0"){
+							alert("恭喜注册成功");
+						}else if (data["code"] == "-1"){
+							alert("抱歉，用户名已经存在");
+						}
+			})
+        })
+	</script>
+
 </html> 
