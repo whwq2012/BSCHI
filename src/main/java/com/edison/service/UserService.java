@@ -1,5 +1,7 @@
 package com.edison.service;
 
+import org.springframework.stereotype.Service;
+
 import com.edison.entity.User;
 
 public interface UserService {

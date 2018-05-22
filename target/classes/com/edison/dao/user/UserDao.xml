@@ -6,7 +6,7 @@
     <!--注意sql语句没有分号结尾  -->  
       
     <insert id="addUser" parameterType="User">
-        insert into user_t(name,password) values(#{name},#{password})  
+        INSERT INTO user(name,password) VALUES(#{name},#{password})  
     </insert>  
       
     <!--注意这里的参数类型是parameterType而不是parameterMap，因为返回的是单个类型  -->  
@@ -18,8 +18,15 @@
         select name from user_t where name=#{name}
     </select>
     
-    <update id="resetUserPassword" parameterType="map">
-        update user_t set password =#{password} where name=#{name};  
-    </update>   
+    <update id="updateUser" parameterType="User">
+    	UPDATE user SET
+    	<if test="nick_name != null">nick_name=#{nick_name},</if>
+      	<if test="hobby != null">hobby=#{hobby},</if>
+      	<if test="address != null">address=#{address},</if>
+      	<if test="phone != null">phone=#{phone},</if>
+      	<if test="sex != null">sex=#{sex},</if>
+      	<if test="birthday != null">birthday=#{birthday}</if>
+      	WHERE id = #{id}
+    </update>
       
 </mapper>  

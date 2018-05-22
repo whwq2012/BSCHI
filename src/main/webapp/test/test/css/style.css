@@ -384,7 +384,7 @@ label{
 .rslides {
   position: relative;
   list-style: none;
-  overflow: hidden;
+/*   overflow: hidden; */
   width: 100%;
   padding: 0;
 }

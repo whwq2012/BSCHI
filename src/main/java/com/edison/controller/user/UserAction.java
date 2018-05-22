@@ -103,26 +103,10 @@ public class UserAction extends BaseController {
     	return user;
     }
     
-    @RequestMapping(value="resetPassword", method = RequestMethod.POST)
-    @ResponseBody
-    public String resetPassword(String name, String oldPassword, String newPassword){
-    	//HttpSession session = request.getSession(true);
-    	User user = getUser();
-    	System.out.println(oldPassword+": " +newPassword);
-    	String result = "";
-    	try {
-    		if (oldPassword.equals(user.getPassword())) {
-        		userService.resetPassword(user.getName(), newPassword);
-        		result = "success";
-    		} else {
-    			result = "oldPasswordNotCorrect";
-    		}
-    	}
-    	catch (Exception e) {
-    		logger.error(e.getMessage());
-			return "error";
-		}
-    	return "success";
-    }
+	@RequestMapping("/123")
+	public void gaa() {
+		System.out.println("11");
+	}
+
     
 }
